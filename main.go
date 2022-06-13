@@ -10,6 +10,7 @@ import (
 )
 
 const MAX = 100
+const PROMPT_MESSAGE = "Please enter a number from 1 to %d\n"
 
 func readString(sc *bufio.Scanner) string {
 	sc.Scan()
@@ -26,15 +27,20 @@ func main() {
 FOR:
 	for {
 		// 1行入力
-		fmt.Printf("Please input number(1 - %d):", MAX)
+		fmt.Printf(PROMPT_MESSAGE, MAX)
 		line := readString(sc)
 
 		// 数値に変換
 		number, err := strconv.Atoi(line)
 		if err != nil {
 			// 数値ではない
-			fmt.Println("not number: " + err.Error())
-			os.Exit(1)
+			fmt.Printf("%s is not number.\n", line)
+			continue
+		}
+
+		// 入力範囲内か確認する
+		if number <= 0 || number > MAX {
+			continue
 		}
 
 		switch {
