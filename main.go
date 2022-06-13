@@ -24,11 +24,13 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	target_number := rand.Intn(MAX-1) + 1
 
+	try_count := 0 // 試行回数
 FOR:
 	for {
 		// 1行入力
 		fmt.Printf(m.Get(PROMPT_MESSAGE), MAX)
 		line := readString(sc)
+		try_count += 1
 
 		// 数値に変換
 		number, err := strconv.Atoi(line)
@@ -59,4 +61,6 @@ FOR:
 			fmt.Println(m.Get(UNDEFINED))
 		}
 	}
+	// 結果出力
+	fmt.Printf(m.Get(END_MESSAGE), try_count)
 }
