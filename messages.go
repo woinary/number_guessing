@@ -9,6 +9,7 @@ const (
 	PROMPT_MESSAGE
 	HIT_MESSAGE
 	END_MESSAGE
+	BREAK_MESSAGE
 	TOO_BIG
 	TOO_SMALL
 	NOT_NUMBER
@@ -17,9 +18,10 @@ const (
 // 各種メッセージの定義
 var messages = map[MessageId]string{
 	UNDEFINED:      "undefined error occured.",
-	PROMPT_MESSAGE: "Please enter a number from 1 to %d\n",
+	PROMPT_MESSAGE: "Please enter a number from 1 to %d(q:quit)\n",
 	HIT_MESSAGE:    "Great! target is %d\n",
 	END_MESSAGE:    "The number of attempts was %d.\n",
+	BREAK_MESSAGE:  "Interrupted.The number of attempts was %d.\n",
 	TOO_BIG:        "too big.",
 	TOO_SMALL:      "too small.",
 	NOT_NUMBER:     "%s is not number.\n",

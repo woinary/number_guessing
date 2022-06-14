@@ -24,13 +24,20 @@ func main() {
 	rand.Seed(time.Now().UnixNano())
 	target_number := rand.Intn(MAX-1) + 1
 
-	try_count := 0 // 試行回数
+	try_count := 0      // 試行回数
+	break_flag := false // 中断フラグ
 FOR:
 	for {
 		// 1行入力
 		fmt.Printf(m.Get(PROMPT_MESSAGE), MAX)
 		line := readString(sc)
 		try_count += 1
+
+		// 中断コマンドのチェック
+		if line == "q" {
+			break_flag = true
+			break
+		}
 
 		// 数値に変換
 		number, err := strconv.Atoi(line)
@@ -62,5 +69,9 @@ FOR:
 		}
 	}
 	// 結果出力
+	if break_flag {
+		fmt.Printf(m.Get(BREAK_MESSAGE), try_count-1)
+		os.Exit(2)
+	}
 	fmt.Printf(m.Get(END_MESSAGE), try_count)
 }
