@@ -26,6 +26,7 @@ func main() {
 
 	try_count := 0      // 試行回数
 	break_flag := false // 中断フラグ
+	history := make([]int, 0, 20)
 FOR:
 	for {
 		// 1行入力
@@ -52,6 +53,9 @@ FOR:
 			continue
 		}
 
+		// ここまで来たら履歴に入れておく
+		history = append(history, number)
+
 		switch {
 		case number == target_number:
 			// 正解なので抜ける
@@ -74,4 +78,9 @@ FOR:
 		os.Exit(2)
 	}
 	fmt.Printf(m.Get(END_MESSAGE), try_count)
+	fmt.Print("input history: ")
+	for i := range history {
+		fmt.Print(history[i], " ")
+	}
+	fmt.Println("")
 }
