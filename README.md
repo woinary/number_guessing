@@ -41,3 +41,10 @@ Great! target is 58
 正解に辿り着いた際に、何回目の試行だったかを表示します。
 
 ### [中断コマンドを追加する](https://github.com/woinary/number_guessing/issues/6)
+
+数値入力時に`q`を入力すると数当てゲームを中断します。
+
+### [最後の結果表示時に履歴を表示する](https://github.com/woinary/number_guessing/issues/7)
+
+最後に今までの入力履歴があった方が良いよね、ということで。入力するたびに覚えておいて、最後に出力するようにします。
+
